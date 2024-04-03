@@ -46,6 +46,7 @@
 #include <nodelet/nodelet.h>
 #include <ros/ros.h>
 #include <sensor_msgs/PointCloud2.h>
+#include <sensor_msgs/LaserScan.h>
 #include <string>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/message_filter.h>
@@ -83,9 +84,12 @@ private:
   message_filters::Subscriber<sensor_msgs::PointCloud2> sub_;
   boost::shared_ptr<MessageFilter> message_filter_;
 
+  sensor_msgs::LaserScan output_scan_;
+
   // ROS Parameters
   unsigned int input_queue_size_;
   std::string target_frame_;
+  std::string cloud_in_topic_;
   double tolerance_;
   double min_height_, max_height_, angle_min_, angle_max_, angle_increment_, scan_time_, range_min_, range_max_;
   bool use_inf_;
